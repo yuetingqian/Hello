@@ -11,14 +11,22 @@ import org.apache.commons.httpclient.methods.InputStreamRequestEntity;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 
+import com.thoughtworks.xstream.XStream;
+
+
+
 public class Hello {
 	
 	
 	public static void main(String[] args) throws HttpException, IOException {
+		XStream xstream = new XStream();
+		xstream.alias("request", Request.class);
 		
 		Request req = new Request();
 		req.setA(1);
 		req.setB("fksfjksa");
+		String xml = xstream.toXML(req);
+		System.out.println(xml);
 		
 		
 		
